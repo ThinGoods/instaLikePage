@@ -4,6 +4,6 @@ function someAction() {
         document.getElementById('outp').innerHTML = x
         document.getElementById('inp').value = ""
     } else {
-        document.getElementById('outp').innerHTML = " "
+        document.getElementById('outp').innerHTML = "пусто"
     }
 }
