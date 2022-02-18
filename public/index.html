@@ -9,7 +9,7 @@
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
     <link rel="stylesheet" href="style.css">
-    <script type="text/javascript" src="scripts.js"></script>
+    <!-- <script type="text/javascript" src="scripts.js"></script> -->
 
   <title>10 TASKS</title>
   </head>
@@ -18,14 +18,13 @@
     <div class="handler">
       <div class="title"><p>Press and will see magic!</p></div>
       <div class="input">
-        <input type="text" id="inp" placeholder="anything">
-        <input type="button" id="pasteButton" value="CLIKNI" onclick="someAction()">
+        <input type="text" id="inp" placeholder="anything"/> <!--onkeyup="someFunction"-->
       </div>
-      <div class="output" id="outp"></div>
+      <div class="output" id="outp">Пусто</div>
     </div>
 
     <!-- <noscript>You need to enable JavaScript to run this app.</noscript> -->
     <div id="root"></div>
-
+  <script src="scripts.js"></script>
 </body>
 </html>

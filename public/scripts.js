@@ -1,9 +1,8 @@
-function someAction() {
-    let x = document.getElementById('inp').value 
-    if (document.getElementById('inp').value != "") {
-        document.getElementById('outp').innerHTML = x
-        document.getElementById('inp').value = ""
-    } else {
-        document.getElementById('outp').innerHTML = "пусто"
+function someFunction() {    
+    document.getElementById('outp').textContent = document.querySelector('#inp').value;
+    if (!document.querySelector('#inp').value.length) {
+        document.getElementById('outp').textContent = "Пусто";
     }
 }
+let inputValue = document.querySelector('#inp')
+inputValue.addEventListener('input', someFunction)
