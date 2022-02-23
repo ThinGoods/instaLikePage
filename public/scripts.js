@@ -4,7 +4,7 @@ function someFunction() {
     // document.getElementById('outp').textContent = document.querySelector('#inp').value;
     if (!inputRow.value.length) {
         divOutput.textContent = "Пусто";
-    } else if (!isNaN(divOutput.textContent = inputRow.value)) {
+    } else if (!isNaN(inputRow.value)) {
         divOutput.textContent = inputRow.value;
     } else { divOutput.textContent = 'Введите число!' }
 }
