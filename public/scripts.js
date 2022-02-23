@@ -4,9 +4,13 @@ function someFunction() {
     // document.getElementById('outp').textContent = document.querySelector('#inp').value;
     if (!inputRow.value.length) {
         divOutput.textContent = "Пусто";
-    } else if (!isNaN(inputRow.value)) {
-        divOutput.textContent = inputRow.value;
-    } else { divOutput.textContent = 'Введите число!' }
+    } else if (isNaN(inputRow.value)) {
+        divOutput.textContent = 'Введите число!'  
+    } else if (inputRow.value < 500) { 
+        divOutput.textContent = inputRow.value; 
+    } else {
+        divOutput.textContent = 'Лимит превышен fuck'
+    }
 }
 let inputValue = document.querySelector('#inp')
 inputValue.addEventListener('input', someFunction)
