@@ -1,56 +1,35 @@
-// let outputValue = document.querySelector('#outp')
-// outputValue.innerHTML = '<img src="../images/redSquare.png" alt="не загрузилось"/>'
-function someFunction() {   
-    let divOutput = document.getElementById('outp');
-    let inputRow = document.querySelector('#inp')
-    // document.getElementById('outp').textContent = document.querySelector('#inp').value;
-    if (!inputRow.value.length) {
-        divOutput.textContent = "Пусто";
-    } else if (isNaN(inputRow.value)) {
-        divOutput.textContent = 'Введите число!'  
-    } else if (inputRow.value < 500) { 
-        divOutput.textContent = inputRow.value; 
+const checkInputStatus = () => {   
+    let outputTextElement = document.querySelector('#outp');
+    let inputNumberElement = document.querySelector('#inp')
+    if (!inputNumberElement.value.length) {
+        outputTextElement.textContent = "Пусто";
+    } else if (isNaN(inputNumberElement.value)) {
+        outputTextElement.textContent = 'Введите число!'  
+    } else if (inputNumberElement.value < 500) { 
+        outputTextElement.textContent = inputNumberElement.value; 
     } else {
-        divOutput.textContent = 'Лимит превышен fuck'
+        outputTextElement.textContent = 'Лимит превышен fuck'
     }
 }
-let inputValue = document.querySelector('#inp')
-inputValue.addEventListener('input', someFunction)
+let inputNumberElement = document.querySelector('#inp')
+inputNumberElement.addEventListener('input', checkInputStatus)
 
-let buttonOfCreationValue = document.querySelector(".buttonOfCreation");
-buttonOfCreationValue.addEventListener('click', createRedSquarefnct);
-
-function createRedSquarefnct() {
-
+const createRedSquare = () => {
     const makeSquare = () => {
-        let img = document.createElement('img');
-        img.src = 'redSquare.png';
-        outputValue.append(img)
+        const imgElement = document.createElement('img');
+        imgElement.src = 'redSquare.png';
+        outputElement.append(imgElement)
     }
-    const outputValue = document.querySelector('#outpSquare');
+    const outputElement = document.querySelector('#outpSquare');
     const numberOfSquares = document.querySelector('#inpNumber').value
     if (numberOfSquares <= 10) {
-        for (let i = 0; i < numberOfSquares; i++) {makeSquare()}
+        for (let i = 0; i < numberOfSquares; i++) {
+            makeSquare()
+        }
     }
-    // let img = document.createElement('img');
-    // img.src = 'redSquare.png';
-    // console.log(img);
-    // outputValue.append(img)
 }
-
-// const outputValue = document.querySelector('#outp');
-// let img = document.createElement('img');
-// img.src = 'redSquare.png';
-// outputValue.append(img)
-
-//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
-/*function someFunction() {    
-    document.getElementById('outp').textContent = document.querySelector('#inp').value;
-    if (!document.querySelector('#inp').value.length) {
-        document.getElementById('outp').textContent = "Пусто";
-    }
-}*/
+let buttonElement = document.querySelector(".buttonOfCreation");
+buttonElement.addEventListener('click', createRedSquare);
 function one () {
     console.log('1');
 }
