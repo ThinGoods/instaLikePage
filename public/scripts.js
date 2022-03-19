@@ -55,4 +55,4 @@ const six = () => {
     console.log('6');
     setTimeout(one, 3000);
 }
-setTimeout(one, 3000);
+// setTimeout(one, 3000);
