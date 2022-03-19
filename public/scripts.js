@@ -30,27 +30,29 @@ const createRedSquare = () => {
 }
 let buttonElement = document.querySelector(".buttonOfCreation");
 buttonElement.addEventListener('click', createRedSquare);
-function one () {
+
+const one = () => {
     console.log('1');
+    setTimeout(two, 3000);
 }
-function two () {
+const two = () => {
     console.log('2');
+    setTimeout(three, 3000);
 }
-function three () {
+const three = () => {
     console.log('3');
+    setTimeout(four, 3000);
 }
-function four () {
+const four = () => {
     console.log('4');
+    setTimeout(five, 3000);
 }
-function five () {
+const five = () => {
     console.log('5');
+    setTimeout(six, 3000);
 }
-function six () {
+const six = () => {
     console.log('6');
+    setTimeout(one, 3000);
 }
-setInterval(one, 3000);
-setInterval(two, 3000);
-setInterval(three, 3000);
-setInterval(four, 3000);
-setInterval(five, 3000);
-setInterval(six, 3000);
+setTimeout(one, 3000);
