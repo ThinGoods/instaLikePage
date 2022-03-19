@@ -1,4 +1,4 @@
-/* 
+/* 30 min (1,2,3,4,5,) 8
   TASK 1
 
   есть переменные objectA и objectB. 
@@ -17,22 +17,28 @@ const objectA = {
     c1: 2
   },
   e: null,
-  f: undefined
+  f: undefined,
 }
 
-const objectB = {
+const objectB = { 
   a: 'bla-bla',
   b: 0,
   c: [],
   d: () => {},
   e: true,
-  f: NaN
+  f: NaN,
 }
-
-const defineTypesInObject = (obj) => {
-  // ...
-}
-
+// рабочий вариант таски
+// const defineTypesInObject = (obj) => {
+//   const exampleObject = {}
+//   for (let key in obj) {
+//     console.log(key);
+//     let typeOfValue = typeof(obj[key]);
+//     exampleObject[key] = typeOfValue;
+//   }
+//   // console.log(exampleObject);
+//   // console.log(typeof(obj));
+// } 
 const resultOfTask1_1 = defineTypesInObject(objectA)
 const resultOfTask1_2 = defineTypesInObject(objectB)
 
@@ -46,7 +52,7 @@ const resultOfTask1_2 = defineTypesInObject(objectB)
     f: 'undefined'
   }
 */
-console.log(resultOfTask1_1)
+// console.log(resultOfTask1_1)
 
 /* 
   тут в результате должно вывести такой обьект в консоль
@@ -59,4 +65,4 @@ console.log(resultOfTask1_1)
     f: 'number'
   }
 */
-console.log(resultOfTask1_2)
+// console.log(resultOfTask1_2)
