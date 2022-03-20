@@ -1,5 +1,4 @@
-/* 30 min (1,2,3,4,5,6) 8
-30 min (1,2,3,4,5,  ) 8 
+/* 
   TASK 1
 
   есть переменные objectA и objectB. 
@@ -29,15 +28,26 @@ const objectB = {
   e: true,
   f: NaN,
 }
+// рабочий вариант таски третий вариант
 const defineTypesInObject = (obj) => {
-  let exampleObject = {}  
-  Object.keys(obj).map((currentKey) => { 
-    exampleObject[currentKey] = typeof(obj[currentKey]) 
+  let exampleObject = {}
+  Object.entries(obj).map(([currentKey, currentValue]) => { 
+  // const [currentKey, currentValue] = currentEntity// для читабельности
+  exampleObject[currentKey] = typeof(currentValue) 
   })
-  console.log("final result",exampleObject);
-} 
+  console.log("Final result",exampleObject);
+}
 
-// рабочий вариант таски
+// рабочий вариант таски второй вариант
+// const defineTypesInObject = (obj) => {
+//   let exampleObject = {}  
+//   Object.keys(obj).map((currentKey) => { 
+//     exampleObject[currentKey] = typeof(obj[currentKey]) 
+//   })
+//   console.log("final result",exampleObject);
+// }
+
+// рабочий вариант таски первый вариант
 // const defineTypesInObject = (obj) => {
 //   const exampleObject = {}
 //   for (let key in obj) {
