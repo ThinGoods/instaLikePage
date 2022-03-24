@@ -25,18 +25,24 @@ const objectC = {
   e: 8,
   f: 9
 }
-// second method
+//third method
 const mergeObjects = (obj1, obj2) => {
-  const resultObject = {};
-
-  Object.keys(obj2).map((currentKeyObj2) => { 
-    resultObject[currentKeyObj2] = obj2[currentKeyObj2]
-  })
-  Object.keys(obj1).map((currentKeyObj1) => { 
-    resultObject[currentKeyObj1] = obj1[currentKeyObj1]
-  })  
+  const resultObject = {...obj2, ...obj1};  
   console.log(resultObject);
 }
+
+// second method
+// const mergeObjects = (obj1, obj2) => {
+//   const resultObject = {};
+
+//   Object.keys(obj2).map((currentKeyObj2) => { 
+//     resultObject[currentKeyObj2] = obj2[currentKeyObj2]
+//   })
+//   Object.keys(obj1).map((currentKeyObj1) => { 
+//     resultObject[currentKeyObj1] = obj1[currentKeyObj1]
+//   })  
+//   console.log(resultObject);
+// }
 
 
 
