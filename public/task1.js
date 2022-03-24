@@ -35,7 +35,7 @@ const defineTypesInObject = (obj) => {
   // const [currentKey, currentValue] = currentEntity// для читабельности
   exampleObject[currentKey] = typeof(currentValue) 
   })
-  console.log("Final result",exampleObject);
+  console.log("Final result",exampleObject); 
 }
 
 // рабочий вариант таски второй вариант

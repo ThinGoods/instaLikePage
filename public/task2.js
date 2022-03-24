@@ -25,10 +25,25 @@ const objectC = {
   e: 8,
   f: 9
 }
-
+// second method
 const mergeObjects = (obj1, obj2) => {
-  // ...
+  const resultObject = {};
+
+  Object.keys(obj2).map((currentKeyObj2) => { 
+    resultObject[currentKeyObj2] = obj2[currentKeyObj2]
+  })
+  Object.keys(obj1).map((currentKeyObj1) => { 
+    resultObject[currentKeyObj1] = obj1[currentKeyObj1]
+  })  
+  console.log(resultObject);
 }
+
+
+
+// first method
+// const mergeObjects = (obj1, obj2) => {
+// return Object.assign({}, obj2, obj1)
+// }
 
 const resultOfTask2_1 = mergeObjects(objectA, objectB)
 const resultOfTask2_2 = mergeObjects(objectA, objectC)
@@ -44,7 +59,7 @@ const resultOfTask2_3 = mergeObjects(objectB, objectC)
     d: 6
   }
 */
-console.log(resultOfTask2_1)
+// console.log("First result",resultOfTask2_1)
 
 /*
   тут в результате должно вывести такой обьект в консоль
@@ -57,7 +72,7 @@ console.log(resultOfTask2_1)
     f: 9
   }
 */
-console.log(resultOfTask2_2)
+// console.log("Second result",resultOfTask2_2)
 
 
 /*
@@ -70,4 +85,4 @@ console.log(resultOfTask2_2)
     f: 9
   }
 */
-console.log(resultOfTask2_3)
+// console.log("Third result",resultOfTask2_3)
