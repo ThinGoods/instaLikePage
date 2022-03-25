@@ -1,6 +1,7 @@
 /*
   TASK 3
-  Создай функцию getSumm которая, принимает любое количество параметров (чисел), и возвращает их сумму
+  Создай функцию getSumm которая, принимает любое количество параметров (чисел), и возвращает их 
+  сумму
 
   Создай два варианта функции getSumm.
   Первый в виде стрелочной функции
@@ -8,15 +9,27 @@
 
   Они должны работать идентично.
 */
-
-const getSumm = () => {
-  // ...
+// third method
+function getSumm() {
+  const args = Array.from(arguments);
+  let summ = args.reduce( (previousItem, currentItem) => previousItem + currentItem)
+  return summ
 }
 
-// function getSumm() {
-//   // ...
+// second method
+// const getSumm = (...args) => {
+//   let summ = 0;
+//   args.map((argument) => { summ += argument })
+//   return summ
 // }
 
+// first method
+// function getSumm() {
+//   let summ = 0;
+//   const args = Array.from(arguments);
+//   args.map((argument) => { summ += argument }) 
+//   return summ
+// }
 
 const result1 = getSumm(1, 2)
 const result2 = getSumm(5, 9, 10, 1)
