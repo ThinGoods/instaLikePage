@@ -24,32 +24,58 @@ const objectC = {
 }
 
 // в этой переменной нужно получить обьект со свойствами objectA 
-const result1 = {};
+const result1 = {
+  ...objectA
+};
+// console.log('ObjectA', result1);
 
 // в этой переменной нужно получить обьект со свойствами objectA и objectB
-const result2 = {};
+const result2 = {
+  ...objectA,
+  ...objectB
+};
+// console.log('ObjectA+B', result2);
 
 // в этой переменной нужно получить обьект со свойствами objectA, objectB и objectC
-const result3 = {};
-
+const result3 = {
+  ...objectA
+  ,...objectB
+  ,...objectC
+};
+// console.log('ObjectA+B+C', result3);
 // в этой переменной нужно получить обьект со свойствами objectA и objectC
 // при этом если у objectC есть свойство которое есть и в objectA, то в новый обьект должно попасть значение только из objectA.
-const result4 = {};
-
+const result4 = {
+  ...objectC,
+  ...objectB,
+  ...objectA
+};
+// console.log('ObjectA+B+C', result4);
 // -------------------------------------------------------------------------
 
-const arrayA = [1, 2, 3, 4, 5]
+const arrayA = [1, 2, 3, 4, 5];
 
-const arrayB = ['a', 'b', 'c']
+const arrayB = ['a', 'b', 'c'];
 
-const arrayC = [null, null, null]
+const arrayC = [null, null, null];
 
 
 // в этом массиве нужно получить элементы из arrayA
-const result5 = []
+const result5 = [
+  ...arrayA
+];
+console.log('arrayA', result5);
 
 // в этом массиве нужно получить элементы сначала из arrayA, потом из arrayB
-const result6 = []
-
+const result6 = [
+  ...arrayA,
+  ...arrayB
+];
+console.log('arrayA+B', result6);
 // в этом массиве нужно получить элементы сначала из arrayC, потом из arrayA, потом из arrayB
-const result7 = []
+const result7 = [
+  ...arrayC,
+  ...arrayA,
+  ...arrayB
+];
+console.log('arrayC+A+B', result7);
