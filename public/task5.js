@@ -62,7 +62,7 @@ const STAS_USER = {
   age: 22,
   diplomas: ['Младший специалист'],
   coinlistAccounts: [
-    { owner: 'Стас', },
+    { owner: 'Стас' },
     { owner: 'Лена' },
     { owner: 'Саша' }
   ],
@@ -100,7 +100,7 @@ const USERS = [NIKITA_USER, STAS_USER]
 */ 
 
 const destrFunc1 = (users) => {
-  // ...
+  let [user1, user2, user3 = 'USER_DOES_NOT_EXIST'] = users;
 
   console.log('destructuring 1', {
     user1,
@@ -109,14 +109,15 @@ const destrFunc1 = (users) => {
   })
 }
 
-destrFunc1(USERS)
+// destrFunc1(USERS)
 
 /*
   2 - вытащи у user - name, surname, age, diplomas
 */
 
 const destrFunc2 = (user) => {
-  // ...
+  let {name, surname, age, diplomas} = user;
+  // let {name:name, surname:surname, age:age, diplomas:diplomas} = user;
 
   console.log('destructuring 2 for ' + user.name, {
     name,
@@ -126,8 +127,8 @@ const destrFunc2 = (user) => {
   })
 }
 
-destrFunc2(NIKITA_USER)
-destrFunc2(STAS_USER)
+// destrFunc2(NIKITA_USER)
+// destrFunc2(STAS_USER)
 
 /*
   3 - вытащи name, surname, age, diplomas у user, 
@@ -135,7 +136,8 @@ destrFunc2(STAS_USER)
 */
 
 const destrFunc3 = (user) => {
-  // ...
+  let {name, surname, age, diplomas, ...restUserData} = user;
+  //let {name:name, surname:surname, age:age, diplomas:diplomas, ...restUserData} = user;
 
   console.log('destructuring 3 for ' + user.name, {
     name, 
@@ -146,8 +148,8 @@ const destrFunc3 = (user) => {
   })
 }
 
-destrFunc3(NIKITA_USER)
-destrFunc3(STAS_USER)
+// destrFunc3(NIKITA_USER)
+// destrFunc3(STAS_USER)
 
 /*
   4 - вытащи у user трех питомцев 
@@ -157,7 +159,16 @@ destrFunc3(STAS_USER)
 */
 
 const destrFunc4 = (user) => {
-  // ...
+  // let {userPet1 = 'PET_DOES_NOT_EXIST', userPet2 = 'PET_DOES_NOT_EXIST', userPet3 = 'PET_DOES_NOT_EXIST'} = user.pets;
+  // console.log(user.pets);
+  let {
+    pets: [
+      userPet1 = 'PET_DOES_NOT_EXIST',
+      userPet2 = 'PET_DOES_NOT_EXIST',
+      userPet3 = 'PET_DOES_NOT_EXIST'
+    ] = [],
+    coinlistAccounts = 'COINLIST_ACCOUNTS_DO_NOT_EXIST'
+  } = user;
 
   console.log('destructuring 4 for ' + user.name, {
     userPet1,
@@ -166,9 +177,9 @@ const destrFunc4 = (user) => {
     coinlistAccounts
   })
 }
+// destrFunc4(NIKITA_USER)
+// destrFunc4(STAS_USER)
 
-destrFunc4(NIKITA_USER)
-destrFunc4(STAS_USER)
 
 /*
   5 - вытащи name первого питомца у user.
@@ -178,15 +189,23 @@ destrFunc4(STAS_USER)
 */
 
 const destrFunc5 = (user) => {
-  // ...
+  // console.log(user.pets);
+  let {
+    pets: [
+      { 
+        name = 'PET_NAME_DOES_NOT_EXIST'
+      } = {},  
+    ] = [],
+  } = user;
+  
 
   console.log('destructuring 5 for ' + user.name, {
     name
   })
 }
 
-destrFunc5(NIKITA_USER)
-destrFunc5(STAS_USER)
+// destrFunc5(NIKITA_USER)
+// destrFunc5(STAS_USER)
 
 /*
   6 - вытащи у user имена трех аккаунтов c coinlistAccounts,
@@ -195,7 +214,19 @@ destrFunc5(STAS_USER)
 */
 
 const destrFunc6 = (user) => {
-  // ...
+  let {
+    coinlistAccounts: [
+      { 
+        owner: userName1 = 'COINLIST_ACCOUNT_NAME_DOES_NOT_EXIST'
+      } = {},
+      { 
+        owner: userName2 = 'COINLIST_ACCOUNT_NAME_DOES_NOT_EXIST'
+      } = {},
+      { 
+        owner: userName3 = 'COINLIST_ACCOUNT_NAME_DOES_NOT_EXIST'
+      } = {},
+    ] = [],
+  } = user;
 
   console.log('destructuring 6 for ' + user.name, {
     userName1,
@@ -204,8 +235,8 @@ const destrFunc6 = (user) => {
   })
 }
 
-destrFunc6(NIKITA_USER)
-destrFunc6(STAS_USER)
+// destrFunc6(NIKITA_USER)
+// destrFunc6(STAS_USER)
 
 /*
   7 - вытащи первые три элемента cryptoInvestments у user
@@ -213,7 +244,13 @@ destrFunc6(STAS_USER)
 */
 
 const destrFunc7 = (user) => {
-  // ...
+  let {
+    cryptoInvestments : [
+      userInvest1 = 'INVESTMENT_DOES_NOT_EXIST',
+      userInvest2 = 'INVESTMENT_DOES_NOT_EXIST',
+      userInvest3 = 'INVESTMENT_DOES_NOT_EXIST',
+    ] = []
+  } = user;
 
   console.log('destructuring 7 for ' + user.name, {
     userInvest1,
@@ -222,17 +259,35 @@ const destrFunc7 = (user) => {
   })
 }
 
-destrFunc7(NIKITA_USER)
-destrFunc7(STAS_USER)
+// destrFunc7(NIKITA_USER)
+// destrFunc7(STAS_USER)
 
 /*
   8 - вытащи первую транзакцию 
   (первый элемент в transactions внутри каждого из трех элементов cryptoInvestments)
-  если элемента нет - дай значение по умолчанию 'TRANSACTION_DOES_NOT_EXIST'
+  если элемента нет - дай значение по умолчанию 'TRANSACTION_DOES_NOT_EXIST',
 */
 
 const destrFunc8 = (user) => {
-  // ...
+  let {
+    cryptoInvestments : [
+      {
+        transactions : [
+          userTransaction1 = 'TRANSACTION_DOES_NOT_EXIST'
+        ] = [],
+      } = {},
+      {
+        transactions : [
+          userTransaction2 = 'TRANSACTION_DOES_NOT_EXIST'
+        ] = [],
+      } = {},
+      {
+        transactions : [
+          userTransaction3 = 'TRANSACTION_DOES_NOT_EXIST'
+        ] = []
+      } = {},
+     ] = []
+  } = user;
 
   console.log('destructuring 8 for ' + user.name, {
     userTransaction1,
@@ -241,8 +296,8 @@ const destrFunc8 = (user) => {
   })
 }
 
-destrFunc8(NIKITA_USER)
-destrFunc8(STAS_USER)
+// destrFunc8(NIKITA_USER)
+// destrFunc8(STAS_USER)
 
 /* 
   9 - в cryptoInvestments у второго элемента вытащи только третью транзакцию, "пропустив" первые две, 
@@ -250,7 +305,16 @@ destrFunc8(STAS_USER)
 */
 
 const destrFunc9 = (user) => {
-  // ...
+  let {
+    cryptoInvestments : [ ,
+      {
+        transactions : [ , ,
+          userTransaction = 'TRANSACTION_DOES_NOT_EXIST'
+          ,...otherUserTransaction
+        ] = []
+      } = {}
+    ]
+  } = user;
 
   console.log('destructuring 9 for ' + user.name, {
     userTransaction,
@@ -258,8 +322,8 @@ const destrFunc9 = (user) => {
   })
 }
 
-destrFunc9(NIKITA_USER)
-destrFunc9(STAS_USER)
+// destrFunc9(NIKITA_USER)
+// destrFunc9(STAS_USER)
 
 /*
   10 - вытащи isHadSamsungGalaxyS8, isHadXiaomi, isHadIPhone поля
@@ -267,7 +331,11 @@ destrFunc9(STAS_USER)
 */
 
 const destrFunc10 = (user) => {
-  // ...
+  let {
+    isHadSamsungGalaxyS8 = false,
+    isHadXiaomi = false,
+    isHadIPhone = false
+  } = user;
 
   console.log('destructuring 10 for ' + user.name, {
     isHadSamsungGalaxyS8,
@@ -276,8 +344,8 @@ const destrFunc10 = (user) => {
   })
 }
 
-destrFunc10(NIKITA_USER)
-destrFunc10(STAS_USER)
+// destrFunc10(NIKITA_USER)
+// destrFunc10(STAS_USER)
 
 /*
   11 - попробуй вытащить сразу в параметрах функции ( на месте "user" )
@@ -286,8 +354,24 @@ destrFunc10(STAS_USER)
   тебе нужно их переименовывать сразу же на ходу (тоже в деструктуризации)
 */
 
-const destrFunc11 = (user) => {
-
+const destrFunc11 = (
+  [{
+    name:name1,
+    surname:surname1,
+    age:age1,
+    diplomas:diplomas1,
+    ...restUserData1
+  },
+  {
+    name:name2,
+    surname:surname2,
+    age:age2,
+    diplomas:diplomas2,
+    ...restUserData2
+  },
+  u3 = 'USER_DOES_NOT_EXIST']
+  
+) => {
   console.log('destructuring 11', {
     name1,
     name2,
@@ -304,5 +388,3 @@ const destrFunc11 = (user) => {
 }
 
 destrFunc11(USERS)
-
-export default {}
