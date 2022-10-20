@@ -41,10 +41,13 @@ const STAS = {
 */
 
 const moreThan = (arr1, arr2) => {
-  // ...
+
+  // console.log(arr1.length > arr2.length);
+  // console.log(arr1.length > arr2.length ? true : false);
+  
 }
 
-const result1 = moreThan(NIKITA.transactions, STAS.transactions)
+// const result1 = moreThan(NIKITA.transactions, STAS.transactions)
 
 
 
@@ -59,15 +62,19 @@ const result1 = moreThan(NIKITA.transactions, STAS.transactions)
 */
 
 const mergeArray = (arr1, arr2) => {
-  // ...
+  let firstArray = arr1.concat(arr2);
+  // // console.log("first way",firstArray);
+
+  // let secondArray = [...arr1, ...arr2]
+  // // console.log("second way",secondArray);
+
+  // let thirdArray = [];
+  // // thirdArray.push(...arr1,...arr2)
+  // // console.log("third way", thirdArray);
+  return firstArray 
 }
 
 const result2 = mergeArray(NIKITA.transactions, STAS.transactions)
-
-
-
-
-
 
 /*
   3 - функция, которая принимает в параметры один массив
@@ -78,21 +85,49 @@ const result2 = mergeArray(NIKITA.transactions, STAS.transactions)
   3.2 - в массив должны попасть элементы с датой больше чем 2017.01.01 и меньше чем 2020.01.01
   3.3 - в массив должны попасть элементы с amount больше чем 60 и меньше чем 150
 */
-
 const filterArray = (arr) => {
-  // ...
-}
+  time1 = new Date(2018, 01, 01)
+  time2 = new Date(2017, 01, 01)
+  time3 = new Date(2020, 01, 01)
+  // console.log(arr);
+  // console.log(time1);
+  let filteredArray31 = arr.filter( (elem) => {
+    return elem.date.getTime() > time1.getTime()
+  });
+  console.log("After 2018.01.01", filteredArray31);
 
+  let filteredArray32 = arr.filter( (elem) => {
+    return elem.date.getTime() > time2.getTime() & elem.date.getTime() < time3.getTime()
+  });
+  console.log("After 2017.01.01 and before 2020.01.01", filteredArray32);
+
+  let filteredArray33 = arr.filter( (elem) => {
+    return elem.amount > 60 & elem.amount < 150 
+  });
+  console.log("150 > amount > 60", filteredArray33);
+    // console.log(elem);
+    // console.log(elem.date)
+    // console.log(elem.date.getTime())
+    //вариант 1
+    // if (elem.date.getTime() > time1.getTime()){
+    //   return elem.date
+    // }
+    // //вариант 2
+    // let DATA = elem.date.getTime()
+    // let TIME1 = time1.getTime()
+    // if (DATA > TIME1){
+    //   return elem.date
+    // }
+    // // {date} = elem;
+  
+  // console.log(filteredArray31);
+}
 // передаю функции общий массив транзакций двух юзеров (чтобы было что фильтровать)
 const result3 = filterArray(result2)
 
-
-
-
-
-
 /*
-  4 - функция, которая принимает в параметры один массив
+  4 - функция, которая п['date']р
+  console.loинимает в параметры один массив
   и возвращает новый массив, в котором элементы должны быть отсортированы по:
 
   4.1 - по дате по убыванию
@@ -164,7 +199,7 @@ const isArrayContainBigAmount = (arr) => {
   // ...
 }
 
-const result7 = isArrayExistBigAmount(result2)
+// const result7 = isArrayExistBigAmount(result2)
 
 
 

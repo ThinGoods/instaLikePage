@@ -5,7 +5,7 @@ const checkInputStatus = () => {
         outputTextElement.textContent = "Пусто";
     } else if (isNaN(inputNumberElement.value)) {
         outputTextElement.textContent = 'Введите число!'  
-    } else if (inputNumberElement.value < 500) { 
+    } else if (inputNumberElement.value < 100) { 
         outputTextElement.textContent = inputNumberElement.value; 
     } else {
         outputTextElement.textContent = 'Лимит превышен fuck'
