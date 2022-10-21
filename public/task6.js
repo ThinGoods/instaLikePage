@@ -91,20 +91,30 @@ const filterArray = (arr) => {
   time3 = new Date(2020, 01, 01)
   // console.log(arr);
   // console.log(time1);
-  let filteredArray31 = arr.filter( (elem) => {
-    return elem.date.getTime() > time1.getTime()
-  });
-  console.log("After 2018.01.01", filteredArray31);
 
-  let filteredArray32 = arr.filter( (elem) => {
-    return elem.date.getTime() > time2.getTime() & elem.date.getTime() < time3.getTime()
-  });
-  console.log("After 2017.01.01 and before 2020.01.01", filteredArray32);
+  // let filteredArray31 = arr.filter( (elem) => {
+  //   return elem.date.getTime() > time1.getTime()
+  // });
+  // console.log("After 2018.01.01", filteredArray31);
 
-  let filteredArray33 = arr.filter( (elem) => {
-    return elem.amount > 60 & elem.amount < 150 
-  });
-  console.log("150 > amount > 60", filteredArray33);
+  // let filteredArray32 = arr.filter( (elem) => {
+  //   return (elem.date.getTime() > time2.getTime()) & (elem.date.getTime() < time3.getTime())
+  //   //добавить скобочек для читабельности
+  // });
+  // console.log("After 2017.01.01 and before 2020.01.01", filteredArray32);
+
+  // let filteredArray33 = arr.filter( (elem) => {
+  //   return elem.amount > 60 & elem.amount < 150 
+  // });
+
+  let filteredArray = arr.map( elem => {
+    return elem.date.getTime()
+    // if (elem.date.getTime() > time1.getTime()){
+    //   return elem.date 
+    // }
+  })
+  console.log(filteredArray);
+  // console.log("150 > amount > 60", filteredArray33);
     // console.log(elem);
     // console.log(elem.date)
     // console.log(elem.date.getTime())
@@ -123,11 +133,10 @@ const filterArray = (arr) => {
   // console.log(filteredArray31);
 }
 // передаю функции общий массив транзакций двух юзеров (чтобы было что фильтровать)
-const result3 = filterArray(result2)
+// const result3 = filterArray(result2)
 
 /*
-  4 - функция, которая п['date']р
-  console.loинимает в параметры один массив
+  4 - функция, которая инимает в параметры один массив
   и возвращает новый массив, в котором элементы должны быть отсортированы по:
 
   4.1 - по дате по убыванию
@@ -138,9 +147,56 @@ const result3 = filterArray(result2)
 */
 
 const sortArray = (arr) => {
-  // ...
-}
 
+  const sortedArray41 = arr.slice().sort( (prev, next) => {
+    // if (prev.date.getTime() > next.date.getTime()) {
+    //   return -1
+    // }
+    // if (prev.date.getTime() < next.date.getTime()) {
+    //   return 1
+    // }
+    return prev.date.getTime() - next.date.getTime()
+  })
+  // console.log(sortedArray41[0].date.getFullYear());
+  console.log("4.1.To smaller",sortedArray41);
+
+  const sortedArray42 = arr.slice().sort( (prev, next) => {
+    // if (prev.date.getTime() > next.date.getTime()) {
+    //   return 1
+    // }
+    // if (prev.date.getTime() < next.date.getTime()) {
+    //   return -1
+    // }
+    return next.date.getTime() - prev.date.getTime()
+  }) 
+  // console.log(sortedArray41[0].date.getFullYear());
+  console.log("4.2.To bigger",sortedArray42);
+
+  const sortedArray43 = arr.slice().sort( (prev, next) => {
+    if (prev.amount < next.amount) {
+      return -1
+    } 
+    if (prev.amount > next.amount) {
+      return 1
+    } 
+    // if (prev.date.getTime() < next.date.getTime()) {
+    //   return -1
+    // }
+    // if (prev.date.getTime() > next.date.getTime()) {
+    //   return 1
+    // }
+  })
+  console.log("4.3.Amount to smaller", sortedArray43);
+  const sortedArray44 = arr.slice().sort( (prev, next) => {
+    if (prev.amount > next.amount) {
+      return -1
+    } 
+    if (prev.amount < next.amount) {
+      return 1
+    }
+  })
+  console.log("4.4.Amount to bigger", sortedArray44);
+}
 // передаю функции общий массив транзакций двух юзеров (чтобы было что сортировать)
 const result4 = sortArray(result2)
 
