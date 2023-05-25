@@ -79,7 +79,7 @@ const result2 = mergeArray(NIKITA.transactions, STAS.transactions)
 /*
   3 - функция, которая принимает в параметры один массив
   и возвращает новый массив, в который должны попасть отфильтрованные элементы
-  первого массива. 
+  первого массива.
   
   3.1 - в массив должны попасть элементы с датой больше чем 2018.01.01
   3.2 - в массив должны попасть элементы с датой больше чем 2017.01.01 и меньше чем 2020.01.01
@@ -149,73 +149,82 @@ const filterArray = (arr) => {
 const sortArray = (arr) => {
 
   const sortedArray41 = arr.slice().sort( (prev, next) => {
-    // if (prev.date.getTime() > next.date.getTime()) {
-    //   return -1
-    // }
-    // if (prev.date.getTime() < next.date.getTime()) {
-    //   return 1
-    // }
-    return prev.date.getTime() - next.date.getTime()
+    return next.date.getTime() - prev.date.getTime()
   })
-  // console.log(sortedArray41[0].date.getFullYear());
-  console.log("4.1.To smaller",sortedArray41);
+  // console.log("4.1.To smaller",sortedArray41);
 
   const sortedArray42 = arr.slice().sort( (prev, next) => {
-    // if (prev.date.getTime() > next.date.getTime()) {
-    //   return 1
-    // }
-    // if (prev.date.getTime() < next.date.getTime()) {
-    //   return -1
-    // }
-    return next.date.getTime() - prev.date.getTime()
-  }) 
-  // console.log(sortedArray41[0].date.getFullYear());
-  console.log("4.2.To bigger",sortedArray42);
+    return prev.date.getTime() - next.date.getTime()
+  })
+  // console.log("4.2.To bigger",sortedArray42);
 
   const sortedArray43 = arr.slice().sort( (prev, next) => {
-    if (prev.amount < next.amount) {
-      return -1
-    } 
-    if (prev.amount > next.amount) {
-      return 1
-    } 
-    // if (prev.date.getTime() < next.date.getTime()) {
+    // if (prev.amount < next.amount) {
     //   return -1
-    // }
-    // if (prev.date.getTime() > next.date.getTime()) {
+    // } 
+    // if (prev.amount > next.amount) {
     //   return 1
-    // }
+    // } 
+    // return next.amount - prev.amount
   })
-  console.log("4.3.Amount to smaller", sortedArray43);
+  // console.log("4.3.Amount to smaller", sortedArray43);
+
   const sortedArray44 = arr.slice().sort( (prev, next) => {
-    if (prev.amount > next.amount) {
-      return -1
-    } 
-    if (prev.amount < next.amount) {
-      return 1
-    }
+    return prev.amount - next.amount
   })
-  console.log("4.4.Amount to bigger", sortedArray44);
+  // console.log("4.4.Amount to bigger", sortedArray44);
 }
 // передаю функции общий массив транзакций двух юзеров (чтобы было что сортировать)
 const result4 = sortArray(result2)
 
 
-
-
-
 /*
   5 - функция принимает массив, возвращает элемент массива, у которого id равен 13
-
   есть 4 разных способа
 */
-
 const searchArray = (arr) => {
-  // ...
+
+  // const variant1 = (arr) => {
+  //   const neededValue1 = arr.filter(element => element.id === 13)
+  //   return neededValue1[0]
+  // }
+  // console.log('First variant',variant1(arr));
+//////////////////////////////////////////////////////////
+  // const variant2 = (arr) => {
+  //   const neededValue2 = arr.find(element => element.id === 13)
+  //   return neededValue2
+  // }
+  // console.log('Second variant', variant2(arr));
+//////////////////////////////////////////////////////////
+  // const variant3 = (arr) => {
+  //   let neededValue3 = arr.forEach(elem => { 
+  //     if (elem.id === 13) {
+  //       console.log(elem);
+  //       return elem
+  //     }})
+  //     console.log(neededValue3);
+      
+  //   const variant3 = (arr) => {
+
+  //   };
+  //   let id13;
+  //   let neededValue3 = arr.map((element) => {
+  //    if (element.id === 13) {
+  //      let id13 = element; 
+  //      console.log(id13);
+  //    }
+  //  })
+  // console.log(id13);  
+  // return neededValue3
+  // console.log('Fourth', neededValue4);
 }
 
 // передаю функции общий массив транзакций двух юзеров (чтобы было где искать)
 const result5 = searchArray(result2)
+
+
+
+
 
 
 
@@ -231,10 +240,34 @@ const result5 = searchArray(result2)
 */
 
 const removeDatesFromArray = (arr) => {
-  // ...
+
+/// first way
+let deepCopyObject = (object) => {
+  return JSON.parse(JSON.stringify(object))
 }
+  let cleanCopy = deepCopyObject(arr)
+  cleanCopy.forEach(element => {
+    delete element.date
+  });
+  console.log('Result6.1', cleanCopy);
 
+/// second way
+  let result62 = arr.map( ({date, ...rest}) => ({...rest}) );
+  console.log('Result6.2',result62);
 
+/// third way
+let w3 = deepCopyObject(arr);
+let finalArray = [];
+for (elem of w3) {
+  let {date, ...rest} = elem;
+  finalArray.push(rest)
+  
+  // delete elem.date
+  // finalArray.push(elem)
+}
+console.log('Result6.3', finalArray);
+
+}
 // передаю функции общий массив транзакций двух юзеров
 const result6 = removeDatesFromArray(result2)
 
